@@ -13,7 +13,7 @@ function fdiff2C(N)
     D = diagm( -1 => ones(N), 0 => -2*ones(N+1), 1 => ones(N))
     D[end,1] = 1
     D[1,end] = 1
-    D = D 
+    D = D / h^2
 end
 function orr_sommerfeld_solver(N, Re, alpha, c, U, U_double_prime)
     D2 = fdiff2C(N)
