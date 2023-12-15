@@ -8,22 +8,13 @@ function fdiff4C(N)
     D[1,end] = -4
     D = D / h^4
 end
-
 function fdiff2C(N)
     h = 1 / (N + 1)
-    D = diagm(-(N-1) => -ones(2), -2 => -ones(N-1), -1 => 16*ones(N), 0 => -30*ones(N+1), 1 => 16*ones(N), 2 => -ones(N-1), N-1 => -ones(2))
-    D[end,1] = 16
-    D[1,end] = 16
-    D = D / (12*h^2)
-end
-function fdiff22C(N)
-    h = 1 / (N + 1)
-    D = diagm(-(N-1) => ones(2), -2 => ones(N-1), -1 => ones(N), 0 => -4*ones(N+1), 1 => ones(N), 2 => ones(N-1), N-1 => ones(2))
+    D = diagm( -1 => ones(N), 0 => -2*ones(N+1), 1 => ones(N))
     D[end,1] = 1
     D[1,end] = 1
-    D = D / (5*h^2)
+    D = D 
 end
-
 function orr_sommerfeld_solver(N, Re, alpha, c, U, U_double_prime)
     D2 = fdiff2C(N)
     D4 = fdiff4C(N)
